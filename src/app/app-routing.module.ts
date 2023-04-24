@@ -17,7 +17,17 @@ const routes: Routes = [
       {
         path: 'admin-panel',
         canActivate: [IsLoggedInGuard],
-        loadComponent: () => import('./core/admin-panel/admin-panel.component').then(c => c.AdminPanelComponent),
+        children: [
+          {
+            path: '',
+            pathMatch: 'prefix',
+            redirectTo: 'warehouse'
+          },
+          {
+            path: 'warehouse',
+            loadComponent: () => import('./core/admin-panel/warehouse/warehouse-list/warehouse-list.component').then(c => c.WarehouseListComponent),
+          }
+        ],
       },
     ]
   },

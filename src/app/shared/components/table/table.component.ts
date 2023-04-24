@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {Column} from "../../types/grid/column";
 
 @Component({
   selector: 'app-table',
@@ -11,8 +12,5 @@ import { CommonModule } from '@angular/common';
 })
 export class TableComponent<T> {
   @Input() dataSource: T[] = [];
-  @Input() columns?: {
-    key: keyof T;
-    title: string;
-  }[];
+  @Input() columns?: Column<T>[];
 }
